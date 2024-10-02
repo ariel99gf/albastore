@@ -35,3 +35,6 @@ jobs:
 
     - name: Pushing docker image
       run: ./gradlew build -Dquarkus.container-image.push=true
+      env:
+        QUARKUS_CONTAINER_IMAGE_USERNAME: ${{ secrets.QUARKUS_CONTAINER_IMAGE_USERNAME }}
+        QUARKUS_CONTAINER_IMAGE_PASSWORD: ${{ secrets.QUARKUS_CONTAINER_IMAGE_PASSWORD }}

@@ -32,3 +32,6 @@ jobs:
 
     - name: Check code formatting
       run: ./gradlew check
+
+    - name: Pushing docker image
+      run: ./gradlew build -Dquarkus.container-image.push=true

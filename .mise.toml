@@ -1,0 +1,4 @@
+[tools]
+gradle = "8.5"
+java = "graalvm-community-21.0.2"
+quarkus = "3.15.1"

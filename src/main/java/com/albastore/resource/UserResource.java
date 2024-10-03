@@ -15,48 +15,48 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class UserResource {
 
-    @Inject
-    UserService userService;
+	@Inject
+	UserService userService;
 
-    @GET
-    public List<User> getAllUsers() {
-        return userService.listAllUsers();
-    }
+	@GET
+	public List<User> getAllUsers() {
+		return userService.listAllUsers();
+	}
 
-    @GET
-    @Path("/{id}")
-    public User getUserById(@PathParam("id") Long id) {
-        return userService.findUserById(id);
-    }
+	@GET
+	@Path("/{id}")
+	public User getUserById(@PathParam("id") Long id) {
+		return userService.findUserById(id);
+	}
 
-    @POST
-    public Response createUser(User user) {
-        userService.createUser(user);
-        return Response.status(Response.Status.CREATED).build();
-    }
+	@POST
+	public Response createUser(User user) {
+		userService.createUser(user);
+		return Response.status(Response.Status.CREATED).build();
+	}
 
-    @PUT
-    @Path("/{id}")
-    public Response updateUser(@PathParam("id") Long id, User user) {
-        userService.updateUser(id, user);
-        return Response.ok().build();
-    }
+	@PUT
+	@Path("/{id}")
+	public Response updateUser(@PathParam("id") Long id, User user) {
+		userService.updateUser(id, user);
+		return Response.ok().build();
+	}
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteUser(@PathParam("id") Long id) {
-        userService.deleteUser(id);
-        return Response.noContent().build();
-    }
+	@DELETE
+	@Path("/{id}")
+	public Response deleteUser(@PathParam("id") Long id) {
+		userService.deleteUser(id);
+		return Response.noContent().build();
+	}
 
-    @POST
-    @Path("/login")
-    public Response login(LoginDTO loginDTO) {
-        User user = userService.authenticate(loginDTO.username, loginDTO.password);
-        if (user != null) {
-            return Response.ok(user).build();
-        } else {
-            return Response.status(Response.Status.UNAUTHORIZED).build();
-        }
-    }
+	@POST
+	@Path("/login")
+	public Response login(LoginDTO loginDTO) {
+		User user = userService.authenticate(loginDTO.username, loginDTO.password);
+		if (user != null) {
+			return Response.ok(user).build();
+		} else {
+			return Response.status(Response.Status.UNAUTHORIZED).build();
+		}
+	}
 }

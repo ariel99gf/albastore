@@ -11,8 +11,8 @@ import java.util.List;
 @Entity
 @Table(name = "carts")
 public class Cart extends PanacheEntity {
-    public String userId;
-    public double totalPrice;
-    @ManyToMany(fetch = FetchType.EAGER)
-    public List<Product> products;
+	public String userId;
+	public double totalPrice;
+	@ManyToMany(fetch = FetchType.EAGER)
+	public List<Product> products;
 }

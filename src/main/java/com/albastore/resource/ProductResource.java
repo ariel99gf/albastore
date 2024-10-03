@@ -14,37 +14,37 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ProductResource {
 
-    @Inject
-    ProductService productService;
+	@Inject
+	ProductService productService;
 
-    @GET
-    public List<Product> getAllProducts() {
-        return productService.listAllProducts();
-    }
+	@GET
+	public List<Product> getAllProducts() {
+		return productService.listAllProducts();
+	}
 
-    @GET
-    @Path("/{id}")
-    public Product getProductById(@PathParam("id") Long id) {
-        return productService.findProductById(id);
-    }
+	@GET
+	@Path("/{id}")
+	public Product getProductById(@PathParam("id") Long id) {
+		return productService.findProductById(id);
+	}
 
-    @POST
-    public Response createProduct(Product product) {
-        productService.createProduct(product);
-        return Response.status(Response.Status.CREATED).build();
-    }
+	@POST
+	public Response createProduct(Product product) {
+		productService.createProduct(product);
+		return Response.status(Response.Status.CREATED).build();
+	}
 
-    @PUT
-    @Path("/{id}")
-    public Response updateProduct(@PathParam("id") Long id, Product product) {
-        productService.updateProduct(id, product);
-        return Response.ok().build();
-    }
+	@PUT
+	@Path("/{id}")
+	public Response updateProduct(@PathParam("id") Long id, Product product) {
+		productService.updateProduct(id, product);
+		return Response.ok().build();
+	}
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteProduct(@PathParam("id") Long id) {
-        productService.deleteProduct(id);
-        return Response.noContent().build();
-    }
+	@DELETE
+	@Path("/{id}")
+	public Response deleteProduct(@PathParam("id") Long id) {
+		productService.deleteProduct(id);
+		return Response.noContent().build();
+	}
 }

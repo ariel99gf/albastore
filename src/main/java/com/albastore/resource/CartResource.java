@@ -14,37 +14,37 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class CartResource {
 
-    @Inject
-    CartService cartService;
+	@Inject
+	CartService cartService;
 
-    @GET
-    public List<Cart> getAllCarts() {
-        return cartService.listAllCarts();
-    }
+	@GET
+	public List<Cart> getAllCarts() {
+		return cartService.listAllCarts();
+	}
 
-    @GET
-    @Path("/{id}")
-    public Cart getCartById(@PathParam("id") Long id) {
-        return cartService.findCartById(id);
-    }
+	@GET
+	@Path("/{id}")
+	public Cart getCartById(@PathParam("id") Long id) {
+		return cartService.findCartById(id);
+	}
 
-    @POST
-    public Response createCart(Cart cart) {
-        cartService.createCart(cart);
-        return Response.status(Response.Status.CREATED).build();
-    }
+	@POST
+	public Response createCart(Cart cart) {
+		cartService.createCart(cart);
+		return Response.status(Response.Status.CREATED).build();
+	}
 
-    @PUT
-    @Path("/{id}")
-    public Response updateCart(@PathParam("id") Long id, Cart cart) {
-        cartService.updateCart(id, cart);
-        return Response.ok().build();
-    }
+	@PUT
+	@Path("/{id}")
+	public Response updateCart(@PathParam("id") Long id, Cart cart) {
+		cartService.updateCart(id, cart);
+		return Response.ok().build();
+	}
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteCart(@PathParam("id") Long id) {
-        cartService.deleteCart(id);
-        return Response.noContent().build();
-    }
+	@DELETE
+	@Path("/{id}")
+	public Response deleteCart(@PathParam("id") Long id) {
+		cartService.deleteCart(id);
+		return Response.noContent().build();
+	}
 }

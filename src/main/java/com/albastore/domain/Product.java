@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 public class Product extends PanacheEntity {
-    public String name;
-    public double price;
-    @ManyToMany(mappedBy = "products")
-    public List<Cart> carts;
+	public String name;
+	public double price;
+	@ManyToMany(mappedBy = "products")
+	public List<Cart> carts;
 }

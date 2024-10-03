@@ -11,33 +11,33 @@ import java.util.List;
 @ApplicationScoped
 public class ProductService {
 
-    @Inject
-    ProductRepository productRepository;
+	@Inject
+	ProductRepository productRepository;
 
-    public List<Product> listAllProducts() {
-        return productRepository.listAll();
-    }
+	public List<Product> listAllProducts() {
+		return productRepository.listAll();
+	}
 
-    public Product findProductById(Long id) {
-        return productRepository.findById(id);
-    }
+	public Product findProductById(Long id) {
+		return productRepository.findById(id);
+	}
 
-    @Transactional
-    public void createProduct(Product product) {
-        productRepository.persist(product);
-    }
+	@Transactional
+	public void createProduct(Product product) {
+		productRepository.persist(product);
+	}
 
-    @Transactional
-    public void updateProduct(Long id, Product product) {
-        Product entity = productRepository.findById(id);
-        if (entity != null) {
-            entity.name = product.name;
-            entity.price = product.price;
-        }
-    }
+	@Transactional
+	public void updateProduct(Long id, Product product) {
+		Product entity = productRepository.findById(id);
+		if (entity != null) {
+			entity.name = product.name;
+			entity.price = product.price;
+		}
+	}
 
-    @Transactional
-    public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
-    }
+	@Transactional
+	public void deleteProduct(Long id) {
+		productRepository.deleteById(id);
+	}
 }

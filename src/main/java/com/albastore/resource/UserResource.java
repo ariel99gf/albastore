@@ -3,6 +3,7 @@ package com.albastore.resource;
 import com.albastore.domain.User;
 import com.albastore.dto.LoginDTO;
 import com.albastore.service.UserService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -19,17 +20,20 @@ public class UserResource {
 	UserService userService;
 
 	@GET
+	@RolesAllowed("admin")
 	public List<User> getAllUsers() {
 		return userService.listAllUsers();
 	}
 
 	@GET
 	@Path("/{id}")
+	@RolesAllowed({"user", "admin"})
 	public User getUserById(@PathParam("id") Long id) {
 		return userService.findUserById(id);
 	}
 
 	@POST
+	@RolesAllowed({"user", "admin"})
 	public Response createUser(User user) {
 		userService.createUser(user);
 		return Response.status(Response.Status.CREATED).build();
@@ -37,6 +41,7 @@ public class UserResource {
 
 	@PUT
 	@Path("/{id}")
+	@RolesAllowed({"user", "admin"})
 	public Response updateUser(@PathParam("id") Long id, User user) {
 		userService.updateUser(id, user);
 		return Response.ok().build();
@@ -44,6 +49,7 @@ public class UserResource {
 
 	@DELETE
 	@Path("/{id}")
+	@RolesAllowed({"user", "admin"})
 	public Response deleteUser(@PathParam("id") Long id) {
 		userService.deleteUser(id);
 		return Response.noContent().build();

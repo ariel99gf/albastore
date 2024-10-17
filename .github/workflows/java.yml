@@ -25,19 +25,19 @@ jobs:
         distribution: 'temurin'
 
     - name: Grant execute permission for gradlew
-      run: chmod +x quarkus_app/gradlew
+      run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./quarkus_app/gradlew build
+      run: ./gradlew build
 
     - name: Run tests
-      run: ./quarkus_app/gradlew test
+      run: ./gradlew test
 
     - name: Check code formatting
-      run: ./quarkus_app/gradlew check
+      run: ./gradlew check
 
     - name: Pushing docker image
-      run: ./quarkus_app/gradlew build -Dquarkus.container-image.push=true
+      run: ./gradlew build -Dquarkus.container-image.push=true
       env:
         QUARKUS_CONTAINER_IMAGE_USERNAME: ${{ secrets.QUARKUS_CONTAINER_IMAGE_USERNAME }}
         QUARKUS_CONTAINER_IMAGE_PASSWORD: ${{ secrets.QUARKUS_CONTAINER_IMAGE_PASSWORD }}
